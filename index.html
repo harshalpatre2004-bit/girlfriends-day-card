@@ -14,34 +14,65 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#ff9a9e,#fad0c4);
 height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-text-align:center;
+background:linear-gradient(135deg,#ff5f9e,#ff9a9e,#ffd1dc);
 overflow:hidden;
-color:white;
 }
 
 .card{
+width:90%;
+max-width:380px;
 background:rgba(255,255,255,.15);
-padding:30px;
+backdrop-filter:blur(18px);
 border-radius:25px;
-backdrop-filter:blur(15px);
-box-shadow:0 0 30px rgba(0,0,0,.2);
-max-width:350px;
-animation:fadeIn 2s;
+padding:25px;
+text-align:center;
+color:white;
+box-shadow:0 10px 30px rgba(0,0,0,.25);
+animation:zoom 1.5s;
+}
+
+@keyframes zoom{
+from{
+transform:scale(.5);
+opacity:0;
+}
+to{
+transform:scale(1);
+opacity:1;
+}
+}
+
+.profile{
+width:170px;
+height:170px;
+border-radius:50%;
+border:5px solid white;
+object-fit:cover;
+margin-bottom:20px;
+animation:beat 2s infinite;
+}
+
+@keyframes beat{
+0%,100%{
+transform:scale(1);
+}
+50%{
+transform:scale(1.08);
+}
 }
 
 h1{
-font-size:32px;
+font-size:28px;
 margin-bottom:15px;
 }
 
 p{
+line-height:1.8;
 font-size:18px;
-line-height:1.7;
 }
 
 button{
@@ -49,25 +80,20 @@ margin-top:20px;
 padding:12px 30px;
 border:none;
 border-radius:30px;
-font-size:18px;
 background:#ff2d55;
-color:#fff;
+color:white;
+font-size:18px;
 cursor:pointer;
+transition:.3s;
 }
 
 button:hover{
 transform:scale(1.05);
 }
 
-@keyframes fadeIn{
-from{opacity:0;transform:scale(.8);}
-to{opacity:1;transform:scale(1);}
-}
-
 .heart{
 position:absolute;
 color:#ff1744;
-font-size:25px;
 animation:float 6s linear infinite;
 }
 
@@ -77,7 +103,7 @@ transform:translateY(100vh);
 opacity:0;
 }
 100%{
-transform:translateY(-120vh);
+transform:translateY(-100px);
 opacity:1;
 }
 }
@@ -87,38 +113,54 @@ opacity:1;
 <body>
 
 <div class="card">
+
+<img src="photo.jpg" class="profile">
+
 <h1>❤️ Happy Girlfriends Day ❤️</h1>
 
 <p>
 Dear Khushi ❤️<br><br>
 
-Aaj ka din sirf Girlfriends Day nahi, balki us insaan ko thank you kehne ka din hai jisne meri life ko itna khoobsurat bana diya.<br><br>
+Aaj ka din sirf Girlfriends Day nahi,
+balki us insaan ko thank you kehne ka din hai
+jisne meri life ko itna khoobsurat bana diya.
 
-Main aapse dil se pyaar karta hoon. ❤️🌹<br><br>
+<br><br>
 
-Happy Girlfriends Day, My Forever Person.
+Main aapse dil se pyaar karta hoon. ❤️
+
 </p>
 
-<button onclick="alert('I Love You Forever ❤️🌹')">
-Click Here ❤️
+<button onclick="alert('I Love You Forever ❤️')">
+Open My Heart ❤️
 </button>
 
 </div>
 
 <script>
-function hearts(){
+
+setInterval(()=>{
+
 let h=document.createElement("div");
-h.className="heart";
+
 h.innerHTML="❤️";
+
+h.className="heart";
+
 h.style.left=Math.random()*100+"vw";
-h.style.fontSize=(20+Math.random()*25)+"px";
+
+h.style.fontSize=(20+Math.random()*30)+"px";
+
 document.body.appendChild(h);
 
 setTimeout(()=>{
+
 h.remove();
+
 },6000);
-}
-setInterval(hearts,300);
+
+},250);
+
 </script>
 
 </body>
